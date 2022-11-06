@@ -1,0 +1,90 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInEditor": 0.48
+        },
+        "#Modern_Exteriors_Complete_Tileset_32x32": {
+            "scaleInDock": 0.283
+        },
+        "Modern_Exteriors_Complete_Tileset_32x32.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Modern_Exteriors_Complete_Tileset_32x32.tsx": {
+            "scaleInDock": 0.3559,
+            "scaleInEditor": 0.2518
+        },
+        "city.json": {
+            "scale": 0.32,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 607.8125,
+                "y": 790.625
+            }
+        },
+        "city.json#Modern_Exteriors_Complete_Tileset_32x32": {
+            "scaleInDock": 0.5917
+        },
+        "city.json#idle_32x32_6": {
+            "scaleInDock": 1
+        },
+        "city.tmj": {
+            "scale": 0.2427,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1116.6048619695096,
+                "y": 1231.9736299958797
+            }
+        },
+        "city.tmj#Modern_Exteriors_Complete_Tileset_32x32": {
+            "scaleInDock": 1
+        },
+        "map.json": {
+            "scale": 0.3289375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 621.6986509595288,
+                "y": 799.5439863195895
+            }
+        },
+        "map.json#Modern_Exteriors_Complete_Tileset_32x32": {
+            "scaleInDock": 1
+        },
+        "map.tmj": {
+            "scale": 0.3289375,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 621.6986509595288,
+                "y": 799.5439863195895
+            }
+        },
+        "map.tmj#Modern_Exteriors_Complete_Tileset_32x32": {
+            "scaleInDock": 1
+        }
+    },
+    "last.imagePath": "/Users/pengweicheng/Desktop/web3hooks/findme/client/public/assets/map",
+    "map.height": 50,
+    "map.lastUsedFormat": "json",
+    "map.layerDataFormat": null,
+    "map.width": 50,
+    "openFiles": [
+    ],
+    "project": "city.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "map.json",
+        "map.tmj",
+        "city.json",
+        "city.tmj",
+        "Modern_Exteriors_Complete_Tileset_32x32.tsx",
+        "Modern_Exteriors_Complete_Tileset_32x32.tsj"
+    ],
+    "tileset.embedInMap": true
+}
