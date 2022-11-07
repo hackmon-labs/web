@@ -7,6 +7,7 @@ import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { Provider } from 'react-redux'
 import store from '../stores'
+// import { Silkscreen } from '@next/font/google'
 
 const { chains, provider, webSocketProvider } = configureChains(
   [
@@ -40,14 +41,17 @@ const wagmiClient = createClient({
   webSocketProvider,
 });
 
+// const silkscreen = Silkscreen({
+//   weight: '400',
+// })
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
         <Provider store={store}>
-        <Component {...pageProps} />
+          <Component {...pageProps} />
         </Provider>
-
       </RainbowKitProvider>
     </WagmiConfig>
   );

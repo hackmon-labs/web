@@ -36,6 +36,7 @@ export default function LoginDialog() {
   // const videoConnected = useAppSelector((state) => state.user.videoConnected)
   // const game = window.game
   // console.log(window, game, phaser)
+  const [hasPlay, setHasPlay] = useState<boolean>(false)
 
 
   const { address, isConnected } = useAccount()
@@ -46,16 +47,19 @@ export default function LoginDialog() {
     }
   }, [isConnected])
 
-  
 
-  const play=()=>{
-    const game = window.game.scene.keys.game
+
+  const play = () => {
+    const game = window.game?.scene?.keys?.game
+    if (!game?.myPlayer) return
+    console.log(game,'game')
     game.registerKeys()
     game.myPlayer.setPlayerName(formatAddress(address as string))
     game.myPlayer.setPlayerTexture('adam')
+    setHasPlay(true)
   }
 
-  
+
 
 
 
@@ -64,24 +68,22 @@ export default function LoginDialog() {
   return (
 
     <div>
-      <div >
+      {!hasPlay&&
+        <div onClick={play} className={styles.playBtn}>play hackmon!</div>
+      }
+      <div style={{
+        position: 'fixed',
+        right: '0',
+        top: '0'
+      }}>
 
-        <div onClick={play} className={styles.playBtn}>play hackmon</div>
-      </div>
-
-    <div style={{
-      position:'fixed',
-      right:'0',
-      top:'0'
-    }}>
-
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            padding: 12,
-          }}>
-            <ConnectButton />
-          </div>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          padding: 12,
+        }}>
+          <ConnectButton />
+        </div>
       </div>
 
     </div>

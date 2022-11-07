@@ -1,10 +1,11 @@
 .containerBox {
-  padding: 0 2rem;
+  background: #22251b;
+  font-family: 'Silkscreen', cursive;
 }
 
 .main {
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: 0 0 14rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -12,3 +13,13 @@
   align-items: center;
 }
 
+.title {
+  font-size: 80px;
+  margin-bottom: 50px;
+}
+
+.link{
+  font-size: 40px;
+  margin-top: 40px;
+  display: block;
+}

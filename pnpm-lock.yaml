@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@next/font': ^13.0.2
   '@rainbow-me/rainbowkit': ^0.7.4
   '@reduxjs/toolkit': ^1.9.0
   '@types/node': ^17.0.35
@@ -21,6 +22,7 @@ specifiers:
   wagmi: ^0.7.5
 
 dependencies:
+  '@next/font': registry.npmmirror.com/@next/font/13.0.2
   '@rainbow-me/rainbowkit': registry.npmmirror.com/@rainbow-me/rainbowkit/0.7.4_ktlj7svo5lxxo62o3jmhxlzopu
   '@reduxjs/toolkit': registry.npmmirror.com/@reduxjs/toolkit/1.9.0_k4ae6lp43ej6mezo3ztvx6pykq
   colyseus.js: registry.npmmirror.com/colyseus.js/0.14.13
@@ -707,6 +709,12 @@ packages:
     dependencies:
       glob: registry.npmmirror.com/glob/7.1.7
     dev: true
+
+  registry.npmmirror.com/@next/font/13.0.2:
+    resolution: {integrity: sha512-tLbyZCA1uF8HjbUEN5c4zB453yEzt5aT9VDhXPw1/eJhX4U0Q4lD3s3Bs+gpCjuLrEgILd56jQuzxgrMnWHH8A==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@next/font/-/font-13.0.2.tgz}
+    name: '@next/font'
+    version: 13.0.2
+    dev: false
 
   registry.npmmirror.com/@next/swc-android-arm-eabi/12.3.2:
     resolution: {integrity: sha512-r2rrz+DZ8YYGqzVrbRrpP6GKzwozpOrnFbErc4k36vUTSFMag9yQahZfaBe06JYdqu/e5yhm/saIDEaSVPRP4g==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@next/swc-android-arm-eabi/-/swc-android-arm-eabi-12.3.2.tgz}
