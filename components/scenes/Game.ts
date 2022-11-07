@@ -16,7 +16,7 @@ import { PlayerBehavior } from '../types/PlayerBehavior'
 import store from '../../stores'
 import { setConnected } from '../../stores/UserStore'
 import { setFocused, setShowChat } from '../../stores/ChatStore'
-import { setOpen as setTalkOpen } from '../../stores/TalkStore';
+import { setOpen } from '../../stores/TalkStore';
 
 interface moveKeysType {
   W: Phaser.Input.Keyboard.Key;
@@ -169,54 +169,24 @@ export default class Game extends Phaser.Scene {
     this.moving = flag
   }
 
-  Plot(player, selectionItem) { // fishing
+  Plot(player: { anims: { stop: () => void } }, selectionItem: any) { // fishing
 
-    if (this.getMoving()) {
-      return
-    }
+    // if (this.getMoving()) {
+    //   return
+    // }
 
     // this.setMoving(true)
-    store.dispatch(setTalkOpen(true))
-
+    store.dispatch(setOpen(true))
+    // this.disableKeys()
     player?.anims?.stop()
 
     console.log('log', this, player, selectionItem)
 
   }
 
-  private hitBomb(player, selectionItem) { // fishing
  
-    if (this.getMoving()){
-      return 
-    }
-    
-      // this.setMoving(true)
-      store.dispatch(setMintOpen(true))
-    
-    player?.anims?.stop()
 
-    console.log('log', this, player, selectionItem)
-
-  }
-
-  private hitBar(player, selectionItem) { // bar
-
-    if (this.getMoving()) {
-      return
-    } 
-
-      console.log('open bar')
-      // this.disableKeys()
-      // this.setMoving(true)
-      // this.setMoving(true)
-      store.dispatch(setBarOpen(true))
-    
-    player?.anims?.stop()
-
-
-    console.log('log', this, player, selectionItem)
-
-  }
+ 
 
   private handleItemSelectorOverlap(playerSelector, selectionItem) {
     const currentItem = playerSelector.selectedItem

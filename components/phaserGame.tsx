@@ -49,13 +49,19 @@ export default function PhaserGame() {
       return;
     }
 
-     game = new Phaser.Game(config);
+    game = new Phaser.Game(config);
     game.scene.start("preloader");
     ; (window as any).game = game
-    
+
   }
 
   return null;
 }
 
+
+declare global {
+  interface Window {
+    game: any
+  }
+}
 

@@ -14,3 +14,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+.ant-modal-wrap{
+  top: auto !important;
+  bottom: 80px !important;
+}

@@ -10,10 +10,10 @@ export default class Preloader extends Phaser.Scene {
   preload() {
     this.load.tilemapTiledJSON('tilemap', 'assets/map/city2.json')
 
-    this.load.spritesheet('tiles', 'assets/map/Modern_Exteriors_Complete_Tileset.png', {
-      frameWidth: 32,
-      frameHeight: 32,
-    });
+    // this.load.spritesheet('tiles', 'assets/map/Modern_Exteriors_Complete_Tileset.png', {
+    //   frameWidth: 32,
+    //   frameHeight: 32,
+    // });
 
 
     this.load.image('tiles_bg', 'assets/map/Modern_Exteriors_Complete_Tileset_32x32.png');

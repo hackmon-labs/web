@@ -19,12 +19,8 @@ export default class Network {
   constructor() {
     const protocol = window.location.protocol.replace('http', 'ws')
     // const endpoint = process.env.NODE_ENV === 'production' ? `wss://vuy0gy.us-east-vin.colyseus.net` : `ws://vuy0gy.us-east-vin.colyseus.net`
-    const endpoint = `ws://localhost:2567`
-    // const endpoint = `wss://web3tot.herokuapp.com`
-    // const endpoint =
-    //   process.env.NODE_ENV === 'production'
-    //     ? `wss://sky-office.herokuapp.com`
-    //     : `${protocol}//${window.location.hostname}:4567`
+    const endpoint = process.env.NODE_ENV === 'production' ? `wss://vuy0gy.us-east-vin.colyseus.net` : `ws://localhost:2567`
+    // const endpoint = `ws://localhost:2567`
     this.client = new Client(endpoint)
 
     console.log(this.client,'this')

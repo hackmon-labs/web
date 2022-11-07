@@ -3,7 +3,9 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import homeBG from '/public/assets/imgs/home.jpg'
+import Logo from '/public/assets/imgs/LOGO.png'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const Home: NextPage = () => {
 
@@ -17,9 +19,6 @@ const Home: NextPage = () => {
           content="Hackmon.xyz"
         />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-        <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet"/>
       </Head>
 
       <main className={styles.main} style={{
@@ -27,7 +26,16 @@ const Home: NextPage = () => {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover'
       }}>
-        <h1 className={styles.title}>Hackmon</h1>
+        <Image
+            alt=''
+            src={Logo}
+            fill="true"
+          />
+        {/* <h1 className={styles.title}>
+          Hackmon
+          </h1> */}
+        
+        {/* <Logo /> */}
         <ConnectButton />
 
         <div className={styles.link}>
@@ -36,7 +44,7 @@ const Home: NextPage = () => {
           pathname: '/game',
         }}
           
-        >play</Link>
+          >play Hackmon</Link>
         </div>
 
       </main>

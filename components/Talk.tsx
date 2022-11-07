@@ -1,15 +1,14 @@
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { setOpen } from '../stores/TalkStore'
-
-import  Modal  from 'react-modal';
+import  {Modal}  from 'antd';
 import { useEffect } from 'react';
 
 
-export default function CreatFishNFT() {
+export default function TalkModal() {
   const dispatch = useAppDispatch()
   const isOpen = useAppSelector((state) => state.talk.open)
 
-
+  
  
 
   const handleOk = () => {
@@ -25,13 +24,13 @@ export default function CreatFishNFT() {
 
   };
 
-
+  console.log(isOpen,'isopen')
 
   return (
     <>
 
-      <Modal isOpen={isOpen}>
-
+     
+      <Modal title="" visible={isOpen} cancelText="skip" okText="next" closable={false} maskClosable={false} centered onOk={handleOk} onCancel={handleCancel}>
         <div style={{ marginBottom: 20 }}>这是对话</div>
 
       </Modal>

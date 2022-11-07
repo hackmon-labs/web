@@ -41,9 +41,7 @@ const Game: NextPage = () => {
         <title>Hackmon</title>
         <meta name="description" content="Hackmon" />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet" /> 
+        
       </Head>
 
       <main className={styles.hackmonBox}>

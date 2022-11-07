@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
+import 'antd/dist/antd.css'
 import type { AppProps } from 'next/app';
 import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
