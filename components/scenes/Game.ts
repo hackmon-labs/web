@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+// @ts-ignore
 
 import { debugDraw } from '../utils/debug'
 import { createCharacterAnims } from '../anims/CharacterAnims'
@@ -169,7 +170,7 @@ export default class Game extends Phaser.Scene {
     this.moving = flag
   }
 
-  Plot(player: { anims: { stop: () => void } }, selectionItem: any) { // fishing
+  Plot(player, selectionItem) { // talk
 
     // if (this.getMoving()) {
     //   return

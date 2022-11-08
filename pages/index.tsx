@@ -29,7 +29,7 @@ const Home: NextPage = () => {
         <Image
             alt=''
             src={Logo}
-            fill="true"
+            // fill="true"
           />
         {/* <h1 className={styles.title}>
           Hackmon
