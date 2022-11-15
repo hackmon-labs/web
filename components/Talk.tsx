@@ -20,7 +20,10 @@ export default function TalkModal() {
   const handleCancel = () => {
     // setIsModalVisible(false);
     dispatch(setOpen(false));
-    // game.enableKeys()
+    console.log(game,'game')
+    // game.scene.npcs.forEach(npc=>
+    //       npc.body.enable=true
+    //       ) 
 
   };
 
@@ -30,7 +33,7 @@ export default function TalkModal() {
     <>
 
      
-      <Modal title="" visible={isOpen} cancelText="skip" okText="next" closable={false} maskClosable={false} centered onOk={handleOk} onCancel={handleCancel}>
+      <Modal title="" open={isOpen} cancelText="skip" okText="next" closable={false} maskClosable={false} centered onOk={handleOk} onCancel={handleCancel}>
         <div style={{ marginBottom: 20 }}>这是对话</div>
 
       </Modal>

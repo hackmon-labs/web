@@ -5,17 +5,17 @@ import { debugDraw } from '../utils/debug'
 import { createCharacterAnims } from '../anims/CharacterAnims'
 
 import Item from '../items/Item'
-import '../characters/MyPlayer'
-import '../characters/OtherPlayer'
-import MyPlayer from '../characters/MyPlayer'
-import PlayerSelector from '../characters/PlayerSelector'
+import '../class/MyPlayer'
+import '../class/OtherPlayer'
+import MyPlayer from '../class/MyPlayer'
+import PlayerSelector from '../class/PlayerSelector'
 import Network from '../services/Network'
 import { IPlayer } from '../types/IOfficeState'
-import OtherPlayer from '../characters/OtherPlayer'
+import OtherPlayer from '../class/OtherPlayer'
 import { PlayerBehavior } from '../types/PlayerBehavior'
 
 import store from '../../stores'
-import { setConnected } from '../../stores/UserStore'
+import { setConnected,setRpgOpen } from '../../stores/UserStore'
 import { setFocused, setShowChat } from '../../stores/ChatStore'
 import { setOpen } from '../../stores/TalkStore';
 
@@ -39,6 +39,8 @@ export default class Game extends Phaser.Scene {
   private otherPlayerMap = new Map<string, OtherPlayer>()
   computerMap = new Map<string, Item>()
   moving: boolean
+  monsters: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody[]
+  npcs: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody[]
 
   constructor() {
     super('game')
@@ -89,37 +91,36 @@ export default class Game extends Phaser.Scene {
     store.dispatch(setConnected(true))
 
     this.scene.stop('preloader')
+    this.scene.stop('forest')
 
     createCharacterAnims(this.anims)
 
     const map = this.make.tilemap({ key: 'tilemap' })
 
-    const FloorAndGround = map.addTilesetImage('Modern_Exteriors_Complete_Tileset_32x32', 'tiles_bg', 32, 32, 0, 0);
+    let FloorAndGround = map.addTilesetImage('city', 'tiles_bg', 32, 32, 0, 0);
+    // FloorAndGround = map.addTilesetImage('Modern_Exteriors_Complete_Tileset_32x32', 'idle_32x32_6', 32, 32, 0, 0);
     // const layer4 = map.createLayer('L4', FloorAndGround, 0, 0);
     // const bg = map.createLayer('bg', FloorAndGround, 0, 0);
+    const Walls = map.createLayer('Walls', FloorAndGround, 0, 0);
 
-    const groundLayer = map.createLayer('Tile Layer 1', FloorAndGround, 0, 0);
-    const layer2 = map.createLayer('Tile Layer 2', FloorAndGround, 0, 0);
-    const layer3 = map.createLayer('Tile Layer 3', FloorAndGround, 0, 0);
-   
-    groundLayer.setCollisionByProperty({
-      collides: true
-    })
+    const groundLayer = map.createLayer('Ground', FloorAndGround, 0, 0);
+    const Buildings = map.createLayer('Buildings', FloorAndGround, 0, 0);
+    // groundLayer.setCollisionByProperty({
+    //   collides: true
+    // })
 
-    layer2.setCollisionByProperty({
+    Walls.setCollisionByProperty({
       collides: true
     })
-    layer3.setCollisionByProperty({
+    Buildings.setCollisionByProperty({
       collides: true
     })
-  
-   
-    // debugDraw(bg, this)
+    const Top = map.createLayer('Top', FloorAndGround, 0, 0);
+    Top.setDepth(1000000) 
+    // this.scene.w
 
     this.myPlayer = this.add.myPlayer(705, 500, 'adam', this.network.mySessionId)
-    // this.myPlayer = this.add.myPlayer(705, 500, 'chair', this.network.mySessionId)
 
-    console.log(this.myPlayer,'this.myplayer')
     this.playerSelector = new PlayerSelector(this, 0, 0, 16, 16)
 
     this.items = this.physics.add.staticGroup({ classType: Item })
@@ -127,27 +128,63 @@ export default class Game extends Phaser.Scene {
 
     this.otherPlayers = this.physics.add.group({ classType: OtherPlayer })
 
-    this.cameras.main.zoom = 1.5
+    this.cameras.main.zoom = 1.3
     this.cameras.main.startFollow(this.myPlayer, true)
 
-    this.physics.add.collider([this.myPlayer, this.myPlayer.playerContainer], groundLayer)
-    this.physics.add.collider([this.myPlayer, this.myPlayer.playerContainer], layer2)
-    this.physics.add.collider([this.myPlayer, this.myPlayer.playerContainer], layer3, this.Plot, null, this)
+    this.physics.add.collider([this.myPlayer, this.myPlayer.playerContainer], Walls )
+    this.physics.add.collider([this.myPlayer, this.myPlayer.playerContainer], Buildings)
+    
+
+    const NPCPoints = map.filterObjects(
+      "NPC",
+      (obj) => obj.name === "NPCPoint"
+    );
+
+    this.npcs = NPCPoints.map(npc =>
+      {
+      return this.physics.add.sprite(npc.x, npc.y, 'npc1', 3).setScale(1)
+    });
+
+    this.npcs.forEach(npc => {
+      npc.body.setSize(npc.width * 1.5, npc.height*1.5)
+      
+    });
+
+    this.physics.add.overlap([this.myPlayer, this.myPlayer.playerContainer], this.npcs,this.npcTalk);
 
 
-    // this.physics.add.collider([this.myPlayer, this.myPlayer.playerContainer], fish, this.hitBomb, null, this);  // 设置player 和 bombs 碰撞. 
-   
-    // this.physics.add.collider([this.myPlayer, this.myPlayer.playerContainer], bar, this.hitBar, null, this);  // 设置player 和 bombs 碰撞. 
+    const MonsterPoints = map.filterObjects(
+      "Monsters",
+      (obj) => obj.name === "monster"
+    );
+
+    this.monsters = MonsterPoints.map(item => {
+      return this.physics.add.sprite(item.x, item.y, 'npc2', 3).setScale(1)
+    });
+
+    this.monsters.forEach(item => {
+      item.body.setSize(item.width * 1.5, item.height * 1.5)
+
+    });
+
+    this.physics.add.overlap([this.myPlayer, this.myPlayer.playerContainer], this.monsters, this.rpgTalk);
 
 
-    this.physics.add.overlap(
-      this.playerSelector,
-      this.items,
-      this.handleItemSelectorOverlap,
-      undefined,
-      this
-    )
 
+    // const ForestPoints = map.filterObjects(
+    //   "Forest",
+    //   (obj) => obj.name === "forestPoint"
+    // );
+
+    // this.forestPoint= ForestPoints.map(item =>
+    //   {
+    //   return this.physics.add.sprite(item.x, item.y, 'forestOri', 0).setScale(1)
+    // });
+
+    // this.physics.add.overlap([this.myPlayer, this.myPlayer.playerContainer], this.forestPoint,this.goForest);
+
+
+  
    
 
     // register network event listeners
@@ -158,6 +195,60 @@ export default class Game extends Phaser.Scene {
     this.network.onPlayerUpdated(this.handlePlayerUpdated, this)
    
     this.network.onChatMessageAdded(this.handleChatMessageAdded, this)
+  }
+  rpgTalk=(arg0: (MyPlayer | Phaser.GameObjects.Container)[], monsters: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody[], rpgTalk: any) =>{
+     monsters.destroy();
+    this.cameras.main.flash();
+    store.dispatch(setRpgOpen(true))
+
+    // throw new Error('Method not implemented.')
+  }
+
+  npcTalk(obj1,obj2){
+    obj2.body.enable=false
+    store.dispatch(setOpen(true))
+
+  }
+
+  goForest=(obj1,obj2)=>{
+    obj1.body.enable=false
+    obj2.body.enable=false
+    // this.cameras.main.flash();
+    //  obj2.destroy();
+    // this.scene.run('forest')
+
+
+    this.scene.transition({
+    target: 'forest',
+    // data: null,
+    // moveAbove: false,
+    // moveBelow: false,
+
+    duration: 1000,
+
+    remove: true,
+    // sleep: false,
+    // allowInput: false,
+
+    // onUpdate: null,
+    // onUpdateScope: scene
+})
+
+  }
+
+  hasMonster(obj1,obj2){
+     // obj2.destroy();
+      
+
+    // this.cameras.main.flash();
+  }
+
+ checkOverlap(spriteA, spriteB) {
+    var boundsA = spriteA.getBounds();
+    var boundsB = spriteB.getBounds();
+      console.log('checkOverlap',Phaser.Rectangle.intersects(boundsA, boundsB))
+    
+    return Phaser.Rectangle.intersects(boundsA, boundsB);
   }
 
   getMoving(){
@@ -185,59 +276,7 @@ export default class Game extends Phaser.Scene {
 
   }
 
- 
-
- 
-
-  private handleItemSelectorOverlap(playerSelector, selectionItem) {
-    const currentItem = playerSelector.selectedItem
-    // currentItem is undefined if nothing was perviously selected
-    if (currentItem) {
-      // if the selection has not changed, do nothing
-      if (currentItem === selectionItem || currentItem.depth >= selectionItem.depth) {
-        return
-      }
-      // if selection changes, clear pervious dialog
-      if (this.myPlayer.playerBehavior !== PlayerBehavior.SITTING) currentItem.clearDialogBox()
-    }
-
-    // set selected item and set up new dialog
-    playerSelector.selectedItem = selectionItem
-    selectionItem.onOverlapDialog()
-  }
-
-  private addObjectFromTiled(
-    group: Phaser.Physics.Arcade.StaticGroup,
-    object: Phaser.Types.Tilemaps.TiledObject,
-    key: string,
-    tilesetName: string
-  ) {
-    const actualX = object.x! + object.width! * 0.5
-    const actualY = object.y! - object.height! * 0.5
-    const obj = group
-      .get(actualX, actualY, key, object.gid! - this.map.getTileset(tilesetName).firstgid)
-      .setDepth(actualY)
-    return obj
-  }
-
-  private addGroupFromTiled(
-    objectLayerName: string,
-    key: string,
-    tilesetName: string,
-    collidable: boolean
-  ) {
-    const group = this.physics.add.staticGroup()
-    const objectLayer = this.map.getObjectLayer(objectLayerName)
-    objectLayer.objects.forEach((object) => {
-      const actualX = object.x! + object.width! * 0.5
-      const actualY = object.y! - object.height! * 0.5
-      group
-        .get(actualX, actualY, key, object.gid! - this.map.getTileset(tilesetName).firstgid)
-        .setDepth(actualY)
-    })
-    if (this.myPlayer && collidable)
-      this.physics.add.collider([this.myPlayer, this.myPlayer.playerContainer], group)
-  }
+  
 
   // function to add new player to the otherPlayer group
   private handlePlayerJoined(newPlayer: IPlayer, id: string) {
@@ -273,7 +312,12 @@ export default class Game extends Phaser.Scene {
   update(t: number, dt: number) {
     if (this.myPlayer && this.network) {
       this.playerSelector.update(this.myPlayer, this.cursors)
-      this.myPlayer.update(this.playerSelector, this.cursors, this.keyE, this.keyR, this.network)
+      this.myPlayer.update(this.playerSelector, this.cursors, this.network)
+
+      // if(this.cursors){
+      // this.physics.add.overlap([this.myPlayer, this.myPlayer.playerContainer], this.npcs,this.npcTalk);
+
+      // }
     }
   }
 }

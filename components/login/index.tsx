@@ -50,8 +50,15 @@ export default function LoginDialog() {
 
 
   const play = () => {
-    const game = window.game?.scene?.keys?.game
-    if (!game?.myPlayer) return
+    let game = window.game?.scene?.keys?.game 
+    const forest= window.game?.scene?.keys?.forest 
+    console.log(game,'game1')
+    if(!game?.myPlayer){
+      game=window.game?.scene?.keys?.forest 
+    }
+    console.log(game,'game2')
+
+    if (!game?.myPlayer || !address) return
     console.log(game,'game')
     game.registerKeys()
     game.myPlayer.setPlayerName(formatAddress(address as string))

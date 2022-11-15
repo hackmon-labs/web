@@ -16,7 +16,13 @@ a {
 }
 
 
-.ant-modal-wrap{
+/* .ant-modal-wrap{
   top: auto !important;
   bottom: 80px !important;
+} */
+
+.rpgBoxModal {
+/* 
+ width :100%;
+ height: 100%; */
 }
