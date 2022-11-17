@@ -20,7 +20,9 @@ export const userSlice = createSlice({
     playerNameMap: new Map<string, string>(),
     tipsOpen:false,
     rpgOpen:false,
-    info:{}
+    info:{
+      token:''
+    }
   },
   reducers: {
     setSessionId: (state, action: PayloadAction<string>) => {
