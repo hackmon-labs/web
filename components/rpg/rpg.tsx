@@ -1,4 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+// @ts-ignore
+
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { setRpgOpen, setInfo } from '../../stores/UserStore'
 import { Modal } from 'antd';
@@ -64,7 +65,7 @@ export default function RpgModal() {
   });
 
 
-  const [monsterDetail, setMonsterDetail] = useState()
+  const [monsterDetail, setMonsterDetail] = useState({})
 
 
   const handleOk = () => {
