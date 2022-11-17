@@ -35,7 +35,7 @@ export default function PhaserGame() {
       default: 'arcade',
       arcade: {
         gravity: { y: 0 },
-        debug: true,
+        debug: false,
       },
     },
     autoFocus: true,
