@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Types } from 'phaser'
 import Main from './scenes/Game'
 import Preloader from './scenes/Preloader'
+import Forest from './scenes/Forest'
 
 
 
@@ -34,11 +35,11 @@ export default function PhaserGame() {
       default: 'arcade',
       arcade: {
         gravity: { y: 0 },
-        debug: false,
+        debug: true,
       },
     },
     autoFocus: true,
-    scene: [Preloader, Main],
+    scene: [Preloader, Main,],
     // scene: [Preloader, ],
   }
 

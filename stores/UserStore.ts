@@ -18,6 +18,9 @@ export const userSlice = createSlice({
     videoConnected: false,
     loggedIn: false,
     playerNameMap: new Map<string, string>(),
+    tipsOpen:false,
+    rpgOpen:false,
+    info:{}
   },
   reducers: {
     setSessionId: (state, action: PayloadAction<string>) => {
@@ -38,6 +41,15 @@ export const userSlice = createSlice({
     removePlayerNameMap: (state, action: PayloadAction<string>) => {
       state.playerNameMap.delete(sanitizeId(action.payload))
     },
+    setTipsOpen: (state, action: PayloadAction<boolean>) => {
+      state.tipsOpen = action.payload
+    },
+     setRpgOpen: (state, action: PayloadAction<boolean>) => {
+       state.rpgOpen = action.payload
+    },
+    setInfo: (state, action: PayloadAction<boolean>) => {
+      state.info = action.payload
+    },
   },
 })
 
@@ -48,6 +60,9 @@ export const {
   setLoggedIn,
   setPlayerNameMap,
   removePlayerNameMap,
+  setTipsOpen,
+  setRpgOpen,
+  setInfo
 } = userSlice.actions
 
 export default userSlice.reducer

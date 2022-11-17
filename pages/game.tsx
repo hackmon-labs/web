@@ -25,14 +25,24 @@ const DynamicComponentWithNoSSRTalk = dynamic(
   { ssr: false }
 )
 
+const DynamicComponentWithNoSSRRPG = dynamic(
+  () => import('../components/rpg/rpg'),
+  { ssr: false }
+)
+
+const DynamicComponentWithNoSSRButton = dynamic(
+  () => import('../components/button/index'),
+  { ssr: false }
+)
+
 const Game: NextPage = () => {
   // @ts-ignore
-  const [loading, setLoading] = useState(false);
+  const [hasLoad, setHasLoad] = useState(false);
   // const talkOpen = useAppSelector((state) => state.talk.open)
 
   useEffect(() => {
-    setLoading(true);
-    console.log('set loading')
+    setHasLoad(true);
+    console.log('set hasLoad')
   }, []);
 
   return (
@@ -41,17 +51,26 @@ const Game: NextPage = () => {
         <title>Hackmon</title>
         <meta name="description" content="Hackmon" />
         <link rel="icon" href="/favicon.ico" />
-        
+
       </Head>
 
       <main className={styles.hackmonBox}>
         {/* <DynamicComponentWithNoSSR /> */}
+        {hasLoad
+          && (
+            <>
+            <div key={Math.random()} id="hackmon-game"></div>
+            <DynamicComponentWithNoSSR />
+            <DynamicComponentWithNoSSRLogin />
+          <DynamicComponentWithNoSSRTalk />
+          <DynamicComponentWithNoSSRRPG />
+            <DynamicComponentWithNoSSRButton/>
+            </>
+          )
 
-        <div key={Math.random()} id="hackmon-game"></div>
-        {loading ? <DynamicComponentWithNoSSR /> : "Loading..."}
-        {loading ? <DynamicComponentWithNoSSRLogin /> : null}
-        {/* {talkOpen && <Talk/>} */}
-        {loading && <DynamicComponentWithNoSSRTalk />}
+        }
+
+       
       </main>
       {/* <Talk /> */}
 

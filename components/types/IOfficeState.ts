@@ -22,6 +22,5 @@ export interface IChatMessage extends Schema {
 
 export interface IOfficeState extends Schema {
   players: MapSchema<IPlayer>
-  // computers: MapSchema<IComputer>
   chatMessages: ArraySchema<IChatMessage>
 }
