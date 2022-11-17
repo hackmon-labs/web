@@ -88,16 +88,6 @@ export default class Network {
     phaserEvents.on(Event.UPDATE_DIALOG_BUBBLE, callback, context)
   }
 
-  // method to register event listener and call back function when a item user added
-  onItemUserAdded(callback: (playerId: string, key: string) => void, context?: any) {
-    phaserEvents.on(Event.ITEM_USER_ADDED, callback, context)
-  }
-
-  // method to register event listener and call back function when a item user removed
-  onItemUserRemoved(callback: (playerId: string, key: string) => void, context?: any) {
-    phaserEvents.on(Event.ITEM_USER_REMOVED, callback, context)
-  }
-
   // method to register event listener and call back function when a player joined
   onPlayerJoined(callback: (Player: IPlayer, key: string) => void, context?: any) {
     phaserEvents.on(Event.PLAYER_JOINED, callback, context)
@@ -113,10 +103,6 @@ export default class Network {
     phaserEvents.on(Event.MY_PLAYER_READY, callback, context)
   }
 
-  // method to register event listener and call back function when my video is connected
-  onMyPlayerVideoConnected(callback: (key: string) => void, context?: any) {
-    phaserEvents.on(Event.MY_PLAYER_VIDEO_CONNECTED, callback, context)
-  }
 
   // method to register event listener and call back function when a player updated
   onPlayerUpdated(

@@ -39,7 +39,7 @@ export default function PhaserGame() {
       },
     },
     autoFocus: true,
-    scene: [Preloader, Main, Forest],
+    scene: [Preloader, Main,],
     // scene: [Preloader, ],
   }
 

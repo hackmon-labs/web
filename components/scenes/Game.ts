@@ -105,6 +105,7 @@ export default class Game extends Phaser.Scene {
 
     const groundLayer = map.createLayer('Ground', FloorAndGround, 0, 0);
     const Buildings = map.createLayer('Buildings', FloorAndGround, 0, 0);
+    const land = map.createLayer('land', FloorAndGround, 0, 0);
     // groundLayer.setCollisionByProperty({
     //   collides: true
     // })
@@ -112,9 +113,13 @@ export default class Game extends Phaser.Scene {
     Walls.setCollisionByProperty({
       collides: true
     })
+    land.setCollisionByProperty({
+      collides: true
+    })
     Buildings.setCollisionByProperty({
       collides: true
     })
+    
     const Top = map.createLayer('Top', FloorAndGround, 0, 0);
     Top.setDepth(1000000) 
     // this.scene.w
@@ -132,6 +137,7 @@ export default class Game extends Phaser.Scene {
     this.cameras.main.startFollow(this.myPlayer, true)
 
     this.physics.add.collider([this.myPlayer, this.myPlayer.playerContainer], Walls )
+    this.physics.add.collider([this.myPlayer, this.myPlayer.playerContainer], land)
     this.physics.add.collider([this.myPlayer, this.myPlayer.playerContainer], Buildings)
     
 

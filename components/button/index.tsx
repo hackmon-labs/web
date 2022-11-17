@@ -46,12 +46,9 @@ export default function TalkModal() {
         <div style={{ marginBottom: 20 }}>这是对话</div>
 
       </Modal> */}
-      <div style={{position:'fixed',left:20,top:20}} onClick={openRpg}>
+      {/* <div style={{position:'fixed',left:20,top:20}} onClick={openRpg}>
         open rpg
-      </div>
-      <div style={{ position: 'fixed', left: 20, top: 60 }} onClick={openForest}>
-        forest
-      </div>
+      </div> */}
     </>
   );
 };
