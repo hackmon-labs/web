@@ -12,7 +12,6 @@ import PlayerSelector from '../class/PlayerSelector'
 import Network from '../services/Network'
 import { IPlayer } from '../types/IOfficeState'
 import OtherPlayer from '../class/OtherPlayer'
-import { PlayerBehavior } from '../types/PlayerBehavior'
 
 import store from '../../stores'
 import { setConnected,setRpgOpen } from '../../stores/UserStore'
@@ -29,11 +28,8 @@ interface moveKeysType {
 export default class Game extends Phaser.Scene {
   network!: Network
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys | moveKeysType
-  private keyE!: Phaser.Input.Keyboard.Key
-  private keyR!: Phaser.Input.Keyboard.Key
-  private map!: Phaser.Tilemaps.Tilemap
+  // private map!: Phaser.Tilemaps.Tilemap
   myPlayer!: MyPlayer
-  private items!: Phaser.Physics.Arcade.StaticGroup
   private playerSelector!: Phaser.GameObjects.Zone
   private otherPlayers!: Phaser.Physics.Arcade.Group
   private otherPlayerMap = new Map<string, OtherPlayer>()
@@ -51,12 +47,6 @@ export default class Game extends Phaser.Scene {
       ...this.input.keyboard.createCursorKeys(),
       ...this.input.keyboard.addKeys('W,S,A,D')
     } 
-    // this.moveKeys = ;
-    // this.cursors =  this.input.keyboard.addCapture('W,S,A,D');
-    console.log(this.cursors, 'cursors', )
-    // maybe we can have a dedicated method for adding keys if more keys are needed in the future
-    this.keyE = this.input.keyboard.addKey('E')
-    this.keyR = this.input.keyboard.addKey('R')
    
     this.input.keyboard.disableGlobalCapture()
     this.input.keyboard.on('keydown-ENTER', (event) => {
@@ -91,16 +81,12 @@ export default class Game extends Phaser.Scene {
     store.dispatch(setConnected(true))
 
     this.scene.stop('preloader')
-    this.scene.stop('forest')
 
     createCharacterAnims(this.anims)
 
     const map = this.make.tilemap({ key: 'tilemap' })
 
     let FloorAndGround = map.addTilesetImage('city', 'tiles_bg', 32, 32, 0, 0);
-    // FloorAndGround = map.addTilesetImage('Modern_Exteriors_Complete_Tileset_32x32', 'idle_32x32_6', 32, 32, 0, 0);
-    // const layer4 = map.createLayer('L4', FloorAndGround, 0, 0);
-    // const bg = map.createLayer('bg', FloorAndGround, 0, 0);
     const Walls = map.createLayer('Walls', FloorAndGround, 0, 0);
 
     const groundLayer = map.createLayer('Ground', FloorAndGround, 0, 0);
@@ -122,7 +108,6 @@ export default class Game extends Phaser.Scene {
     
     const Top = map.createLayer('Top', FloorAndGround, 0, 0);
     Top.setDepth(1000000) 
-    // this.scene.w
 
     this.myPlayer = this.add.myPlayer(705, 500, 'adam', this.network.mySessionId)
 
@@ -190,16 +175,11 @@ export default class Game extends Phaser.Scene {
     // this.physics.add.overlap([this.myPlayer, this.myPlayer.playerContainer], this.forestPoint,this.goForest);
 
 
-  
    
 
-    // register network event listeners
     this.network.onPlayerJoined(this.handlePlayerJoined, this)
     this.network.onPlayerLeft(this.handlePlayerLeft, this)
-    // this.network.onMyPlayerReady(this.handleMyPlayerReady, this)
-    // this.network.onMyPlayerVideoConnected(this.handleMyVideoConnected, this)
     this.network.onPlayerUpdated(this.handlePlayerUpdated, this)
-   
     this.network.onChatMessageAdded(this.handleChatMessageAdded, this)
   }
   rpgTalk=(arg0: (MyPlayer | Phaser.GameObjects.Container)[], monsters: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody[], rpgTalk: any) =>{
@@ -219,25 +199,13 @@ export default class Game extends Phaser.Scene {
   goForest=(obj1,obj2)=>{
     obj1.body.enable=false
     obj2.body.enable=false
-    // this.cameras.main.flash();
-    //  obj2.destroy();
-    // this.scene.run('forest')
+  
 
 
     this.scene.transition({
     target: 'forest',
-    // data: null,
-    // moveAbove: false,
-    // moveBelow: false,
-
     duration: 1000,
-
     remove: true,
-    // sleep: false,
-    // allowInput: false,
-
-    // onUpdate: null,
-    // onUpdateScope: scene
 })
 
   }

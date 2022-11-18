@@ -3,34 +3,31 @@ import { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import { useContext } from 'react';
-// import Talk from '../components/Talk'
-// import { useAppSelector } from '../hooks'
 import styles from '../styles/game.module.css';
 
 
 
-const DynamicComponentWithNoSSR = dynamic(
+const HackMonGame = dynamic(
   () => import('../components/phaserGame'),
   { ssr: false }
 )
 
-const DynamicComponentWithNoSSRLogin = dynamic(
-  () => import('../components/login'),
+const Login = dynamic(
+  () => import('../components/login/Login'),
   { ssr: false }
 )
 
-const DynamicComponentWithNoSSRTalk = dynamic(
+const Talk = dynamic(
   () => import('../components/Talk'),
   { ssr: false }
 )
 
-const DynamicComponentWithNoSSRRPG = dynamic(
-  () => import('../components/rpg/rpg'),
+const RPGGame = dynamic(
+  () => import('../components/rpg/RpgGame'),
   { ssr: false }
 )
 
-const DynamicComponentWithNoSSRButton = dynamic(
+const ButtonCom = dynamic(
   () => import('../components/button/index'),
   { ssr: false }
 )
@@ -38,33 +35,30 @@ const DynamicComponentWithNoSSRButton = dynamic(
 const Game: NextPage = () => {
   // @ts-ignore
   const [hasLoad, setHasLoad] = useState(false);
-  // const talkOpen = useAppSelector((state) => state.talk.open)
 
   useEffect(() => {
     setHasLoad(true);
-    console.log('set hasLoad')
   }, []);
 
   return (
     <div>
       <Head>
         <title>Hackmon</title>
-        <meta name="description" content="Hackmon" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="Hackmon" content="Hackmon" />
 
       </Head>
 
       <main className={styles.hackmonBox}>
-        {/* <DynamicComponentWithNoSSR /> */}
-        {hasLoad
+        {/* <HackMonGame /> */}
+        {hasLoad  
           && (
             <>
             <div key={Math.random()} id="hackmon-game"></div>
-            <DynamicComponentWithNoSSR />
-            <DynamicComponentWithNoSSRLogin />
-          <DynamicComponentWithNoSSRTalk />
-          <DynamicComponentWithNoSSRRPG />
-            <DynamicComponentWithNoSSRButton/>
+            <HackMonGame />
+            <Login />
+          <Talk />
+          <RPGGame />
+            <ButtonCom/>
             </>
           )
 

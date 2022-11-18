@@ -15,10 +15,10 @@ const Home: NextPage = () => {
       <Head>
         <title>Hackmon</title>
         <meta
-          name="description"
+          name="Hackmon"
           content="Hackmon.xyz"
         />
-        <link rel="icon" href="/favicon.ico" />
+        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
       <main className={styles.main} style={{

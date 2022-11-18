@@ -23,7 +23,6 @@ export default class Network {
     // const endpoint = `ws://localhost:2567`
     this.client = new Client(endpoint)
 
-    console.log(this.client,'this')
 
     phaserEvents.on(Event.MY_PLAYER_NAME_CHANGE, this.updatePlayerName, this)
     phaserEvents.on(Event.MY_PLAYER_TEXTURE_CHANGE, this.updatePlayer, this)
@@ -54,7 +53,6 @@ export default class Network {
             store.dispatch(setPlayerNameMap({ id: key, name: value }))
             store.dispatch(pushPlayerJoinedMessage(value))
           }
-          console.log(field,value,'change')
         })
       }
     }
@@ -122,13 +120,6 @@ export default class Network {
     this.room?.send(Message.UPDATE_PLAYER_NAME, { name: currentName })
   }
 
-  // method to send ready-to-connect signal to Colyseus server
-  readyToConnect() {
-    this.room?.send(Message.READY_TO_CONNECT)
-    phaserEvents.emit(Event.MY_PLAYER_READY)
-  }
-
-  
 
 
   addChatMessage(content: string) {
