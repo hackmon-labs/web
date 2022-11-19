@@ -5,7 +5,7 @@ import { Modal, message, Card,Checkbox } from 'antd';
 import { useEffect,useState } from 'react';
 import { useAccount, useContractWrite, useContractRead } from 'wagmi'
 import { useRequest } from 'ahooks';
-import {FIND_URL,CEATE_URL,ATTACK_URL,ATTACKSTRAT_URL,GETNFTS_URL,fethchFn,UPDATEITEM_URL}  from '../services/ApiService';
+import {FIND_URL,CEATE_URL,ATTACK_URL,ATTACKSTRAT_URL,GETNFTS_URL,fethchFn,UPDATEITEM_URL,BUYBLOOD_URL}  from '../services/ApiService';
 import FramePng from '../../public/assets/imgs/frame.png'
 import mintABI from '../abi/VRFMINT.json'
 
@@ -34,10 +34,18 @@ export default function PackageModal() {
     manual: true
   });
 
-  const { runAsync: updateItem, loading: updateItemLoading } = useRequest(() => fethchFn({
+  const { runAsync: updateItem,data:updateData, loading: updateItemLoading } = useRequest(() => fethchFn({
     url: UPDATEITEM_URL,
     token:info?.token,
     tokens:checkedValues?.map(item=>nfts.find(j=>item==j.tokenId))
+  }), {
+    manual: true
+  });
+
+  const { runAsync: buyBlood,data:butData, loading: BuyBloodLoading } = useRequest(() => fethchFn({
+    url: BUYBLOOD_URL,
+    token:info?.token,
+    
   }), {
     manual: true
   });
@@ -123,15 +131,15 @@ export default function PackageModal() {
   }
 
   useEffect(() => {
-    if(isLoading||BoxLoading||updateItemLoading){
+    if(isLoading||BoxLoading||updateItemLoading||BuyBloodLoading){
       openMessage()
     }
-    if (isSuccess || boxSuccess||!updateItemLoading){
+    if (isSuccess || boxSuccess||updateData||butData){
       closeMessage()
     }
 
 
-  }, [isSuccess, isLoading, BoxLoading, boxSuccess,updateItemLoading])
+  }, [isSuccess, isLoading, BoxLoading, boxSuccess,updateItemLoading,updateData,BuyBloodLoading,butData])
   const boxOnChain=()=>{
     write?.()
   }
@@ -146,6 +154,12 @@ const onChange = (checkedValues) => {
   console.log('checked = ', checkedValues);
   setCheckedValues(checkedValues)
 };
+
+const buyBloodFn=()=>{
+  buyBlood()
+  .then(res=>res.json())
+  .then(res=>setInfoDetail(res?.message))
+}
 
  
   console.log(infoDetail)
@@ -176,6 +190,7 @@ const onChange = (checkedValues) => {
           </div>
           <div style={{fontSize:30,color:'gold'}}>
             blood:{infoDetail?.blood}
+            <span className="boxOnChain" onClick={buyBloodFn}>buy(100gold)</span>
           </div>
 
           <div style={{display:'flex'}}>

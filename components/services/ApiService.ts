@@ -7,6 +7,7 @@ export const ATTACKSTRAT_URL = '/api/hackmon/attackStart'
 export const RECOVER_URL = '/api/hackmon/recover'
 export const GETNFTS_URL = '/api/hackmon/nfts'
 export const UPDATEITEM_URL = '/api/hackmon/updateItem'
+export const BUYBLOOD_URL = '/api/hackmon/buyBlood'
 
 
 
