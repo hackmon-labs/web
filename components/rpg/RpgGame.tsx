@@ -209,7 +209,7 @@ const key = 'updateHP';
 
           <div className='monsterPng'><img src={HackerPng.src} style={{height:256}} /></div>
           <div className="ml50">
-            <div  className="npcTitle" >> hackman</div>
+            <div  className="npcTitle" >{'>'} hackman</div>
             
             <div  className="font20 width500">
                 <Progress showInfo={false}  percent={(percentHacker / (user.maxHp + user.addMaxHp))*100} status="active" />
