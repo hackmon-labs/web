@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useEffect, useRef } from 'react';
 import { Types } from 'phaser'
 import Main from './scenes/Game'

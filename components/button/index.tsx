@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { setPackageOpen } from '../../stores/UserStore'
 import { Modal } from 'antd';

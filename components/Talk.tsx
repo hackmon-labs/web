@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { setOpen } from '../stores/TalkStore'
 import  {Modal}  from 'antd';

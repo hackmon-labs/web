@@ -1,5 +1,5 @@
 // @ts-ignore
-
+/* eslint-disable */
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { setRpgOpen, setInfo } from '../../stores/UserStore'
 import { Modal,Progress,message } from 'antd';
