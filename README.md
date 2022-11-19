@@ -9,14 +9,13 @@
 </div>
 
 
-## hackmon is an MMORPG where players can socially and fight monsters, Play to own
+## hackmon is an MMORPG where players can socially and fight monsters, Protect Ethereum safety and dedicated to defeating monsters in the dark forest, play to own
 
 ![website](./ReadmeImgs/1.jpg)
 ![fight](./ReadmeImgs/2.jpg)
-![npc](./ReadmeImgs/3.jpg)
 ![people](./ReadmeImgs/4.jpg)
 ![package](./ReadmeImgs/5.jpg)
-![story](./ReadmeImgs/6.jpg)
+
 
 ## Inspiration
 
@@ -24,26 +23,18 @@
 
 ## What it does
 
-A large multi -person role -playing game can get money or strengthen the equipment of the equipment by fighting the enemy, so that more people are silent here.
+web use `nextjs`+`rainbowkit`+`colyseus`+`phaser`+`wagmi`
+
+Large-scale multiplayer role-playing games can obtain money or enhance equipment equipment by fighting the enemy.
 
 ## How we built it
 
-We use Chainlink Any API to synchronize the user's under -linter data to the chain, and use Chainlink VRF to randomly obtain bonus equipment.On the other hand, it also uses Any API + Automation to synchronize the key data of all players, so that every player can verify it on the chain
-
-## Challenges we ran into
-
-supabase is learning while doing it. The game also adds a multiplayer system. In the future, we plan to fight against players. We wrote some contracts for the trading market, but we haven't finished it yet.
-
-## Accomplishments that we're proud of
-
-We finished it in a short time, and also found the chain self -inspection system composed of Any API+Automation, so that players can play with confidence, and will not have the problem of losing central data like FTX.
-
-## What we learned
-
-I wrote 4 warehouses. I will have hand in all the processes. The work ability is more comprehensive. For the first time, I used Supabse. It feels very good.
+We use **Chainlink Any API** to synchronize the user's game data to the chain, and use **Chainlink VRF** to randomly obtain bonus equipment.On the other hand, it also uses **Any API + Automation** to synchronize the game data of all players, so that every player can verify it on the chain
 
 ## What's next for hackmon
 
-In the contract, we intend to continue to do the trading market in the game. Low taxes and fast transactions may also have AMA exchanges. Players' equipment can be synthesized to generate rare props.The game threshold, so that more web2 users can play the game
+ we intend to continue to do the trading market in the game. Low taxes and fast transactions may also have AMA exchanges. Players' equipment can be synthesized to generate rare props.Add more story plot.
+ let more web2 users can play the game
+
 
 
