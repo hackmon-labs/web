@@ -15,14 +15,99 @@ a {
   box-sizing: border-box;
 }
 
-
 /* .ant-modal-wrap{
   top: auto !important;
   bottom: 80px !important;
 } */
 
-.rpgBoxModal {
-/* 
- width :100%;
- height: 100%; */
+
+/* .rpgBoxModal { */
+.rpgBoxModal .ant-modal-content {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.rpgBoxModal .ant-modal-body {
+  padding: 0 !important;
+}
+
+.ant-message-notice-content {
+  background: none !important;
+  box-shadow: none !important;
+  background-image: url(../public/assets/imgs/frame.png) !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+}
+
+/* } */
+
+.npcTitle {
+  font-size: 30px
+}
+
+.font30 {
+  font-size: 30px;
+}
+
+.font20 {
+  font-size: 20px
+}
+
+.width400 {
+  width: 400px
+}
+
+.width500 {
+  width: 500px
+}
+
+.ml50 {
+  margin-left: 30px
+}
+
+.hackerBox {
+
+  display: flex;
+}
+
+.monsterBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.monsterPng {
+  /* height: 300px */
+}
+
+.action {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px
+}
+
+.actionItem1 {
+  color: red;
+  cursor: pointer;
+}
+
+.actionItem2 {
+  color: green;
+  cursor: pointer;
+}
+
+.package img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+
+}
+
+.boxOnChain {
+  font-size: 20px;
+  color: red;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.ant-checkbox-group{
+  display:flex !important;
 }

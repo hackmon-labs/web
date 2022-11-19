@@ -1,12 +1,14 @@
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { setRpgOpen } from '../../stores/UserStore'
+import { setPackageOpen } from '../../stores/UserStore'
 import { Modal } from 'antd';
 import { useEffect } from 'react';
+import PackagePng from '../../public/assets/imgs/package.jpg'
 
 
-export default function TalkModal() {
+export default function ButtonModal() {
   const dispatch = useAppDispatch()
   const isOpen = useAppSelector((state) => state.user.rpgOpen)
+  const info = useAppSelector((state) => state.user.info)
 
 
 
@@ -24,19 +26,13 @@ export default function TalkModal() {
 
   // };
 
-  const openRpg=()=>{
-    dispatch(setRpgOpen(true));
+  const openPackage=()=>{
+    dispatch(setPackageOpen(true));
 
   }
 
-  const openForest=()=>{
-    // dispatch(setRpgOpen(true));
-    
-    console.log(window.game,'window.game')
-    // window.game?.scene?._start(window.game?.scene?.keys?.forest)
-  }
+  
 
-  console.log(isOpen, 'isopen')
 
   return (
     <>
@@ -46,9 +42,17 @@ export default function TalkModal() {
         <div style={{ marginBottom: 20 }}>这是对话</div>
 
       </Modal> */}
-      {/* <div style={{position:'fixed',left:20,top:20}} onClick={openRpg}>
-        open rpg
-      </div> */}
+     
+        <div style={{position:'fixed',left:20,top:20}} >
+        <div className='package' onClick={openPackage}><img src={PackagePng.src} /></div>
+
+          {/* <div style={{fontSize:30,color:'gold'}}>
+            gold:{info?.user?.gold}
+          </div>
+          <div style={{fontSize:30,color:'gold'}} onClick={openRpg}>box:{info?.user?.box} */}
+       {/* { open rpg} */}
+
+      </div>
     </>
   );
 };

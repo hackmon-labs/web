@@ -1,7 +1,6 @@
 import Phaser from 'phaser'
 
 export default class Preloader extends Phaser.Scene {
-  private counter = 0
 
   constructor() {
     super('preloader')
@@ -25,10 +24,10 @@ export default class Preloader extends Phaser.Scene {
     })
 
 
-     this.load.spritesheet('monster', 'assets/character/monster.jpg', {
-      frameWidth: 200,
-      frameHeight: 200,
-    })
+    //  this.load.spritesheet('monster', 'assets/character/monster.jpg', {
+    //   frameWidth: 200,
+    //   frameHeight: 200,
+    // })
 
     this.load.spritesheet('npc2', 'assets/character/npc2.png', {
       frameWidth: 32,

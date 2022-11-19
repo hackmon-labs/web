@@ -15,14 +15,14 @@ export const userSlice = createSlice({
   initialState: {
     sessionId: '',
     connected: false,
-    videoConnected: false,
     loggedIn: false,
     playerNameMap: new Map<string, string>(),
     tipsOpen:false,
     rpgOpen:false,
     info:{
       token:''
-    }
+    },
+    packageOpen:false,
   },
   reducers: {
     setSessionId: (state, action: PayloadAction<string>) => {
@@ -30,9 +30,6 @@ export const userSlice = createSlice({
     },
     setConnected: (state, action: PayloadAction<boolean>) => {
       state.connected = action.payload
-    },
-    setVideoConnected: (state, action: PayloadAction<boolean>) => {
-      state.videoConnected = action.payload
     },
     setLoggedIn: (state, action: PayloadAction<boolean>) => {
       state.loggedIn = action.payload
@@ -52,19 +49,22 @@ export const userSlice = createSlice({
     setInfo: (state, action: PayloadAction<boolean>) => {
       state.info = action.payload
     },
+    setPackageOpen: (state, action: PayloadAction<boolean>) => {
+      state.packageOpen = action.payload
+    },
   },
 })
 
 export const {
   setSessionId,
   setConnected,
-  setVideoConnected,
   setLoggedIn,
   setPlayerNameMap,
   removePlayerNameMap,
   setTipsOpen,
   setRpgOpen,
-  setInfo
+  setInfo,
+  setPackageOpen
 } = userSlice.actions
 
 export default userSlice.reducer

@@ -32,6 +32,11 @@ const ButtonCom = dynamic(
   { ssr: false }
 )
 
+const PackageCom = dynamic(
+  () => import('../components/button/package'),
+  { ssr: false }
+)
+
 const Game: NextPage = () => {
   // @ts-ignore
   const [hasLoad, setHasLoad] = useState(false);
@@ -49,16 +54,17 @@ const Game: NextPage = () => {
       </Head>
 
       <main className={styles.hackmonBox}>
-        {/* <HackMonGame /> */}
+        <HackMonGame />
         {hasLoad  
           && (
             <>
             <div key={Math.random()} id="hackmon-game"></div>
-            <HackMonGame />
+            {/* <HackMonGame /> */}
             <Login />
           <Talk />
           <RPGGame />
             <ButtonCom/>
+            <PackageCom/>
             </>
           )
 
