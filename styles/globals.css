@@ -108,6 +108,64 @@ a {
   margin-left: 20px;
   cursor: pointer;
 }
-.ant-checkbox-group{
-  display:flex !important;
+
+.ant-checkbox-group {
+  display: flex !important;
+}
+
+/* talk */
+
+.aiTalk {
+  float: left;
+  display: block;
+  padding: 0 10px;
+  background: #feffe6;
+
+  color: #666;
+  margin: 5px 0;
+  border-radius: 10px;
+  position: relative;
+}
+
+.aiTalk::after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 6px;
+  height: 6px;
+  top: 50%;
+  left: -3px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+
+.hackerTalk {
+  float: right;
+  display: block;
+  margin-left: 40px;
+  background: #fff1f0;
+  padding: 0 10px;
+  color: red;
+  margin: 5px 0;
+  border-radius: 10px;
+  position: relative;
+}
+
+.hackerTalk::after {
+  position: absolute;
+  display: block;
+  content: '';
+  width: 6px;
+  height: 6px;
+  top: 37%;
+  right: -2px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+
+.clearfix:before {
+  content: '.';
+  height: 0;
+  display: block;
+  clear: both;
 }

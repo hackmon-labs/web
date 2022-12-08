@@ -21,6 +21,7 @@ specifiers:
   redux: ^4.2.0
   redux-typescript: ^1.2.1
   typescript: ^4.7.2
+  uuid: ^9.0.0
   wagmi: ^0.7.5
 
 dependencies:
@@ -39,6 +40,7 @@ dependencies:
   react-redux: registry.npmmirror.com/react-redux/8.0.5_enrw5jeuyj6rhate63usoxw2ye
   redux: registry.npmmirror.com/redux/4.2.0
   redux-typescript: registry.npmmirror.com/redux-typescript/1.2.1
+  uuid: registry.npmmirror.com/uuid/9.0.0
   wagmi: registry.npmmirror.com/wagmi/0.7.10_ir5rj4sfbt34e63yhlgyn6mx7a
 
 devDependencies:
@@ -6272,6 +6274,13 @@ packages:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/uuid/-/uuid-8.3.2.tgz}
     name: uuid
     version: 8.3.2
+    hasBin: true
+    dev: false
+
+  registry.npmmirror.com/uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/uuid/-/uuid-9.0.0.tgz}
+    name: uuid
+    version: 9.0.0
     hasBin: true
     dev: false
 

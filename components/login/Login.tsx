@@ -10,7 +10,7 @@ import {  setInfo } from '../../stores/UserStore'
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import styles from '../../styles/game.module.css'
 import { useAccount, useSignMessage } from 'wagmi'
-import {FIND_URL,CEATE_URL,fethchFn}  from '../services/ApiService';
+import { FIND_URL, CEATE_URL,ATTACKSTRAT_URL,fethchFn}  from '../services/ApiService';
 import { useRequest } from 'ahooks';
 
 
@@ -40,7 +40,7 @@ export default function LoginDialog() {
   const dispatch = useAppDispatch()
   const info = useAppSelector((state) => state.user.info)
 
-  const message=`Welcome To Hackmon!`
+  const message=`Welcome To Hackmon! \nNonce：${Math.floor(Math.random()*10000)}`
 
   const { data, isError, isLoading, isSuccess, signMessage } = useSignMessage({
     message,
@@ -52,6 +52,13 @@ export default function LoginDialog() {
     address
   }), {
     manual: true
+  });
+
+  const { runAsync: attackStartFn, loading: startLoading } = useRequest(() => fethchFn({
+    url: ATTACKSTRAT_URL,
+    token: info?.token
+  }), {
+    manual: true,
   });
 
   const { loading,  runAsync:createFn } = useRequest(() => fethchFn({
@@ -89,8 +96,20 @@ export default function LoginDialog() {
         if (!res.ok) {
           setNeedSignMessage(true)
         }else{
+
+          // attackStartFnRun()
           dispatch(setInfo(res?.user));
         }
+      })
+  }
+
+  const attackStartFnRun=()=>{
+    attackStartFn()
+      .then(res => res.json())
+      .then(async (res) => {
+        console.log(res, 'res')
+        dispatch(setInfo(res?.user));
+        // start()
       })
   }
 

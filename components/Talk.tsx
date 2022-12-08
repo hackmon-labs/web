@@ -1,17 +1,37 @@
 /* eslint-disable */
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { setOpen } from '../stores/TalkStore'
-import  {Modal}  from 'antd';
-import { useEffect } from 'react';
+import { Modal, Skeleton, Input } from 'antd';
+import { useRequest } from 'ahooks';
+import { useEffect, useState, useRef,useMemo } from 'react';
 import FramePng from '../public/assets/imgs/frame.png'
+import { TALK_URL, fethchFn } from './services/ApiService';
+import { v4 as uuidv4 } from 'uuid';
+
+const NPC = 0
+const HACKMAN = 1
 
 
 export default function TalkModal() {
   const dispatch = useAppDispatch()
   const isOpen = useAppSelector((state) => state.talk.open)
+  const info = useAppSelector((state) => state.user.info)
+  const ref = useRef()
+  const [textList, setTextList] = useState([])
+  const [text, setText] = useState('')
+  // const [uuid, setUuid] = useState()
 
-  
- 
+
+  const { runAsync: talkFn, loading: talkLoading, data } = useRequest((uuid) => fethchFn({
+    url: TALK_URL,
+    token: info?.token,
+    text,
+    talkUuid:uuid
+  }), {
+    manual: true,
+
+  });
+
 
   const handleOk = () => {
     // write?.()
@@ -22,61 +42,97 @@ export default function TalkModal() {
   const handleCancel = () => {
     // setIsModalVisible(false);
     dispatch(setOpen(false));
-    console.log(game,'game')
+    console.log(game, 'game')
     // game.scene.npcs.forEach(npc=>
     //       npc.body.enable=true
     //       ) 
 
   };
 
-  // console.log(isOpen,'isopen')
+  const talkFnRun = () => {
+    talkFn(ref.current)
+      .then(res => res.json())
+      .then(async (res) => {
+
+        setTextList(old => {
+          return [...old].concat({
+            time: new Date(),
+            message: res.message,
+            type: NPC
+          })
+        })
+
+      })
+  }
+
+  useEffect(() => {
+    if (isOpen) {
+      setTextList([])
+      ref.current=uuidv4()
+      talkFnRun()
+    }
 
 
-  const textlist=[
-    `OlympusDAO confirmed the exploit on its Discord channel today. There, it stated that the attacker “was able to withdraw roughly 30K OHM ($300K)” but that most of the project’s other funds remained safe. 20221021`,
-    `Attacker can perform price manipulation by transferring HEALTH token 999 times to reduce HEALTH token in uniswap pair. 20221020`,
-    `Attacker can input empty data into _r, _s and _v to bypass all checks to mint BEGO token. 20221020`,
-    `Due _addre is controllable. Attacker can call setToken() to set fake token created by self.
-
-1.setToken to faketoken
-
-2.Deposit faketoken
-
-3.setToken to HPAY
-
-3.withdraw.  over 20221018`,
-`Attacker can directly call Flashloan with userData “0x307832” which is bytes “0x2” from balancer and set EFLeverVault as recipient to trigger  _withdraw(loan_amount, fee_amount);  to make vault retain enough ETH. Then attacker can call withdraw to drain out the ETH in L429. 20221014`,
-`Root cause: Insecure use balanceOf to calculate price is vulnerable to price manipulation over flash loan.
-
-The calim Function use getPrice() in ASK Token Contract
-
-Vulnerable code snippet:
-
-Incorrect price calculation via balanceOf. 20221012`,
-`Root cause: arbitrary external call vulnerability.
-
-Since data is controllable by an attacker, so he can perform arbitrary external calls via functionCallWithValue. In this incident, the attacker sends funds out over transferfrom function. 20221011`,
-`Root cause: Economic issue 
-
-The vulnerability stemmed from the thin liquidity on the exchange market between MNGO and the USDC stablecoin, which was used as the price reference for a MNGO perpetual swap. 20221011`
-  ]
+  }, [isOpen])
 
 
-  const text=textlist[Math.floor(Math.random()*8)]
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    console.log('Change:', e.target.value);
+
+    setText(e.target.value)
+  };
+
+  const onPressEnter = async (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    if (!e.target.value) return
+   
+
+    setTextList(old => {
+      return [...old].concat({
+        time: new Date(),
+        message: e.target.value,
+        type: HACKMAN
+      })
+    })
+    talkFnRun()
+    setText('')
+
+  };
+
+
+ const renderTalk=useMemo(()=>{
+  return textList?.map((item, i) => {
+            if (item.type == NPC) {
+              return (
+                <div className='aiTalk clearfix' key={`${i}` + item.time.toString()}>{item.message}</div>
+              )
+            } else {
+              return (
+                <div className='hackerTalk clearfix' key={`${i}` + item.time.toString()}>{item.message}</div>
+              )
+            }
+          })
+ },[textList.length])
+
+
+
 
 
   return (
     <>
 
-      <Modal   width={800} height={500}  getContainer={false} footer={null} className='rpgBoxModal' title="" open={isOpen} closable={false} maskClosable={true} centered onCancel={handleCancel}>
-      <div  style={{
-          backgroundImage:`url(${FramePng.src})`,
+      <Modal width={800} height={500} getContainer={false} footer={null} className='rpgBoxModal' title="" open={isOpen} closable={false} maskClosable={true} centered onCancel={handleCancel}>
+        <div style={{
+          backgroundImage: `url(${FramePng.src})`,
           backgroundRepeat: 'no-repeat',
           backgroundSize: '100% 100%',
-          padding: '70px'
+          padding: '70px',
+
         }}>
-        <div style={{ marginBottom: 20 }}>{text}</div>
-</div>
+          <div style={{ marginBottom: 20 }} >{renderTalk}</div>
+          {talkLoading && <Skeleton active />}
+          {<Input value={text} onChange={onChange} onPressEnter={onPressEnter} />}
+        </div>
       </Modal>
     </>
   );

@@ -9,6 +9,8 @@ export default class Preloader extends Phaser.Scene {
   preload() {
     this.load.tilemapTiledJSON('tilemap', 'assets/map/city.json')
 
+
+    // TODO 减少体积
     this.load.image('tiles_bg', 'assets/map/city.png');
 
 
