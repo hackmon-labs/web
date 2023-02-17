@@ -8,7 +8,7 @@ import { useAccount } from 'wagmi'
 import { useRequest } from 'ahooks';
 import {FIND_URL,CEATE_URL,ATTACK_URL,ATTACKSTRAT_URL,RECOVER_URL,fethchFn}  from '../services/ApiService';
 import HackerPng from '../../public/assets/imgs/hacker.png'
-import MonsterPng from '../../public/assets/imgs/monster.png'
+import MonsterPng from '../../public/assets/imgs/monster2.png'
 import FramePng from '../../public/assets/imgs/frame.png'
 import { Image } from 'next/image';
 
@@ -195,7 +195,7 @@ const key = 'updateHP';
         
         {monster && <div className='monsterBox' style={{ marginBottom: 20 }}>
           <div>
-            <div className="npcTitle" >monster</div>
+            <div className="npcTitle" >Drone</div>
             <div  className="font20 width400">
               <Progress strokeColor="red" showInfo={false} format={(percent) => percent+'/'+monster.monsterMaxHp +'hp'} percent={(percentMonster/monster.monsterMaxHp)*100} status="active" />
               <span>HP : {percentMonster}/{monster.monsterMaxHp}</span>
@@ -209,7 +209,7 @@ const key = 'updateHP';
 
           <div className='monsterPng'><img src={HackerPng.src} style={{height:256}} /></div>
           <div className="ml50">
-            <div  className="npcTitle" >{'>'} hackman</div>
+            <div  className="npcTitle" >{'>'} You</div>
             
             <div  className="font20 width500">
                 <Progress showInfo={false}  percent={(percentHacker / (user.maxHp + user.addMaxHp))*100} status="active" />

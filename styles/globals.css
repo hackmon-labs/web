@@ -75,8 +75,9 @@ a {
   justify-content: space-between;
 }
 
-.monsterPng {
+.monsterPng img{
   /* height: 300px */
+  height:256px;
 }
 
 .action {
@@ -99,7 +100,7 @@ a {
   width: 50px;
   height: 50px;
   cursor: pointer;
-
+  border-radius:8px;
 }
 
 .boxOnChain {
@@ -163,9 +164,34 @@ a {
   transform: rotate(45deg);
 }
 
-.clearfix:before {
+/* .clearfix:before {
   content: '.';
   height: 0;
   display: block;
   clear: both;
+} */
+
+.chat-messages {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 80%;
+}
+
+.chat-message-left {
+  align-self: flex-start;
+  background-color: #eee;
+}
+
+.chat-message-right {
+  align-self: flex-end;
+  background-color: #b9f6ca;
 }

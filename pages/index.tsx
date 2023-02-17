@@ -3,7 +3,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import homeBG from '/public/assets/imgs/home.jpg'
-import Logo from '/public/assets/imgs/LOGO.png'
+// import Logo from '/public/assets/imgs/LOGO.png'
+import Logo from '/public/assets/imgs/logo.jpg'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -27,9 +28,11 @@ const Home: NextPage = () => {
         backgroundSize: 'cover'
       }}>
         <Image
+        className={styles.logo}
             alt=''
             src={Logo}
-            // fill="true"
+            // height="300"
+            fill="true"
           />
         {/* <h1 className={styles.title}>
           Hackmon
@@ -45,6 +48,11 @@ const Home: NextPage = () => {
         }}
           
           >play Hackmon</Link>
+        </div>
+
+        <div className={styles.Bomlink}>
+          <a href="https://twitter.com/HackmonX">Twitter</a>
+          <a href="https://discord.gg/aDJFjBEmdU">Discord</a>
         </div>
 
       </main>

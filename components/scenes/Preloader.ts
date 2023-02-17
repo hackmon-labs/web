@@ -7,11 +7,11 @@ export default class Preloader extends Phaser.Scene {
   }
 
   preload() {
-    this.load.tilemapTiledJSON('tilemap', 'assets/map/city.json')
+    this.load.tilemapTiledJSON('tilemap', 'assets/map/new-city.json')
 
 
     // TODO 减少体积
-    this.load.image('tiles_bg', 'assets/map/city.png');
+    this.load.image('tiles_bg', 'assets/map/new-city.png');
 
 
     this.load.spritesheet('adam', 'assets/character/adam.png', {
@@ -23,6 +23,11 @@ export default class Preloader extends Phaser.Scene {
     this.load.spritesheet('npc1', 'assets/character/npc1.png', {
       frameWidth: 32,
       frameHeight: 64,
+    })
+
+    this.load.spritesheet('drone', 'assets/character/Drone.png', {
+      frameWidth: 96,
+      frameHeight: 96,
     })
 
 

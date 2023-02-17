@@ -1,9 +1,10 @@
 /* eslint-disable */
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { setPackageOpen } from '../../stores/UserStore'
+import { setPackageOpen, setAigcOpen } from '../../stores/UserStore'
 import { Modal } from 'antd';
 import { useEffect } from 'react';
 import PackagePng from '../../public/assets/imgs/package.jpg'
+import AigcPng from '../../public/assets/imgs/aigc.jpg'
 
 
 export default function ButtonModal() {
@@ -32,6 +33,11 @@ export default function ButtonModal() {
 
   }
 
+  const openAigc=()=>{
+    dispatch(setAigcOpen(true));
+
+  }
+
   
 
 
@@ -46,6 +52,7 @@ export default function ButtonModal() {
      
         <div style={{position:'fixed',left:20,top:20}} >
         <div className='package' onClick={openPackage}><img src={PackagePng.src} /></div>
+        {/* <div className='package' style={{marginTop:20}} onClick={openAigc}><img src={AigcPng.src} /></div> */}
 
           {/* <div style={{fontSize:30,color:'gold'}}>
             gold:{info?.user?.gold}

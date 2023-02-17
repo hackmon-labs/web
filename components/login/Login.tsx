@@ -12,8 +12,9 @@ import styles from '../../styles/game.module.css'
 import { useAccount, useSignMessage } from 'wagmi'
 import { FIND_URL, CEATE_URL,ATTACKSTRAT_URL,fethchFn}  from '../services/ApiService';
 import { useRequest } from 'ahooks';
-
-
+import { Alert, message } from 'antd';
+const antdMsg = message
+// message
 // @ts-ignore
 
 
@@ -34,6 +35,11 @@ export default function LoginDialog() {
   const [needSignMessage, setNeedSignMessage] = useState<boolean>(false)
   //
   const [hasPlay, setHasPlay] = useState<boolean>(false)
+
+  // address
+
+  const [noLogin, setNoLogin] = useState<boolean>(false)
+  
 
 
   const { address, isConnected } = useAccount()
@@ -137,11 +143,22 @@ export default function LoginDialog() {
 
   }
 
+  const loginBefore=()=>{
+    // setNoLogin(true)
+
+    // setTimeout(() => {  
+    //   setNoLogin(false)
+
+    // }, 3000);
+
+    antdMsg.error('Please link wallet');
+  }
+
 
   const start=()=>{
     let game = window.game?.scene?.keys?.game
     
-    if (!game?.myPlayer || !address) return
+    if (!game?.myPlayer || !address) return loginBefore()
 
     game.registerKeys()
     game.myPlayer.setPlayerName(formatAddress(address as string))
@@ -157,6 +174,12 @@ export default function LoginDialog() {
   return (
 
     <div>
+      {/* {noLogin&&<Alert
+        message="Error"
+        description="This is an error message about copywriting."
+        type="error"
+        showIcon
+      />} */}
       {!hasPlay&&
         <div onClick={play} className={styles.playBtn}>play hackmon!</div>
       }

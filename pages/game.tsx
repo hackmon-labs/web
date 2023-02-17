@@ -37,6 +37,11 @@ const PackageCom = dynamic(
   { ssr: false }
 )
 
+const AigcCom = dynamic(
+  () => import('../components/button/aigc'),
+  { ssr: false }
+)
+
 const Game: NextPage = () => {
   // @ts-ignore
   const [hasLoad, setHasLoad] = useState(false);
@@ -65,6 +70,7 @@ const Game: NextPage = () => {
           <RPGGame />
             <ButtonCom/>
             <PackageCom/>
+            <AigcCom/>
             </>
           )
 

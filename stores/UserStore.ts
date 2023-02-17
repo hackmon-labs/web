@@ -23,6 +23,7 @@ export const userSlice = createSlice({
       token:''
     },
     packageOpen:false,
+    aigcOpen:false,
   },
   reducers: {
     setSessionId: (state, action: PayloadAction<string>) => {
@@ -52,6 +53,9 @@ export const userSlice = createSlice({
     setPackageOpen: (state, action: PayloadAction<boolean>) => {
       state.packageOpen = action.payload
     },
+    setAigcOpen: (state, action: PayloadAction<boolean>) => {
+      state.aigcOpen = action.payload
+    },
   },
 })
 
@@ -64,7 +68,8 @@ export const {
   setTipsOpen,
   setRpgOpen,
   setInfo,
-  setPackageOpen
+  setPackageOpen,
+  setAigcOpen
 } = userSlice.actions
 
 export default userSlice.reducer

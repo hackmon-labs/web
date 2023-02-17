@@ -19,8 +19,9 @@ export default class Network {
   constructor() {
     const protocol = window.location.protocol.replace('http', 'ws')
     // const endpoint = process.env.NODE_ENV === 'production' ? `wss://vuy0gy.us-east-vin.colyseus.net` : `ws://vuy0gy.us-east-vin.colyseus.net`
-    const endpoint = process.env.NODE_ENV === 'production' ? `wss://ap-jov.colyseus.dev` : `ws://localhost:2567`
-    // const endpoint = `ws://localhost:2567`
+    // const endpoint = process.env.NODE_ENV === 'production' ? `wss://ap-jov.colyseus.dev` : `ws://localhost:2567`
+    // const endpoint = process.env.NODE_ENV === 'production' ? `wss://ap-jov.colyseus.dev` : `ws://localhost:2567`
+    const endpoint = `wss://ap-jov.colyseus.dev`
     this.client = new Client(endpoint)
 
 

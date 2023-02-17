@@ -104,11 +104,11 @@ export default function TalkModal() {
   return textList?.map((item, i) => {
             if (item.type == NPC) {
               return (
-                <div className='aiTalk clearfix' key={`${i}` + item.time.toString()}>{item.message}</div>
+                <div className='chat-message chat-message-left ' key={`${i}` + item.time.toString()}>{item.message}</div>
               )
             } else {
               return (
-                <div className='hackerTalk clearfix' key={`${i}` + item.time.toString()}>{item.message}</div>
+                <div className='chat-message chat-message-right' key={`${i}` + item.time.toString()}>{item.message}</div>
               )
             }
           })
@@ -129,7 +129,7 @@ export default function TalkModal() {
           padding: '70px',
 
         }}>
-          <div style={{ marginBottom: 20 }} >{renderTalk}</div>
+          <div style={{ marginBottom: 20 }} className="chat-messages" >{renderTalk}</div>
           {talkLoading && <Skeleton active />}
           {<Input value={text} onChange={onChange} onPressEnter={onPressEnter} />}
         </div>

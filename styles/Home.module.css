@@ -3,6 +3,7 @@
   font-family: 'Silkscreen', cursive;
 }
 
+
 .main {
   min-height: 100vh;
   padding: 0 0 14rem 0;
@@ -23,4 +24,23 @@
   margin-top: 40px;
   display: block;
   color: #fff;
+}
+.link a{
+  color: gold;
+
+}
+
+.Bomlink{
+  display: flex;
+    /* color: #fff; */
+    font-size: 30px;
+    justify-content: space-evenly;
+    /* padding: 20px; */
+    width: 500px;
+    margin-top: 80px;
+}
+
+.Bomlink a{
+  /* display: flex; */
+  color:#fff;
 }
