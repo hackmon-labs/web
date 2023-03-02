@@ -7,6 +7,7 @@ import { useEffect, useState, useRef,useMemo } from 'react';
 import FramePng from '../public/assets/imgs/frame.png'
 import { TALK_URL, fethchFn } from './services/ApiService';
 import { v4 as uuidv4 } from 'uuid';
+import TypeWriter from './TypeWriter'
 
 const NPC = 0
 const HACKMAN = 1
@@ -104,7 +105,9 @@ export default function TalkModal() {
   return textList?.map((item, i) => {
             if (item.type == NPC) {
               return (
-                <div className='chat-message chat-message-left ' key={`${i}` + item.time.toString()}>{item.message}</div>
+                <div className='chat-message chat-message-left ' key={`${i}` + item.time.toString()}>
+                  <TypeWriter text={item.message} />
+                  </div>
               )
             } else {
               return (
