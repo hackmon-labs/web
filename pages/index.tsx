@@ -60,7 +60,7 @@ const Home: NextPage = () => {
           <a onClick={discordOpenClick} href="javascript:;" >
 
             Discord
-            <a/>
+            <a />
         </div>
 
       </main>
