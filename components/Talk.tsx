@@ -129,8 +129,9 @@ export default function TalkModal() {
           padding: '70px',
 
         }}>
-          <div style={{ marginBottom: 20 }} className="chat-messages" >{renderTalk}</div>
-          {talkLoading && <Skeleton active />}
+          <div style={{ marginBottom: 20 }} className="chat-messages" >{renderTalk}
+            {talkLoading && <Skeleton active />}</div>
+          
           {<Input value={text} onChange={onChange} onPressEnter={onPressEnter} />}
         </div>
       </Modal>

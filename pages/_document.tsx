@@ -9,7 +9,7 @@ export default function Document() {
         <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet" /> 
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <body>
+      <body style={{height: 'auto'}}>
         <Main />
         <NextScript />
       </body>
