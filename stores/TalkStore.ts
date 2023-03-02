@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const talkStore = createSlice({
   name: 'talk',
@@ -7,13 +7,11 @@ export const talkStore = createSlice({
   },
   reducers: {
     setOpen: (state, action: PayloadAction<boolean>) => {
-      state.open = action.payload
+      state.open = action.payload;
     },
-  }
-})
+  },
+});
 
-export const {
-  setOpen,
-} = talkStore.actions
+export const { setOpen } = talkStore.actions;
 
-export default talkStore.reducer
+export default talkStore.reducer;

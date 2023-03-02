@@ -1,8 +1,9 @@
-import Phaser from 'phaser'
+import Phaser from 'phaser';
 
-export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) => {
-  const animsFrameRate = 15
-
+export const createCharacterAnims = (
+  anims: Phaser.Animations.AnimationManager
+) => {
+  const animsFrameRate = 15;
 
   anims.create({
     key: 'adam_idle_right',
@@ -12,7 +13,7 @@ export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) 
     }),
     repeat: -1,
     frameRate: animsFrameRate * 0.6,
-  })
+  });
 
   anims.create({
     key: 'adam_idle_up',
@@ -22,7 +23,7 @@ export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) 
     }),
     repeat: -1,
     frameRate: animsFrameRate * 0.6,
-  })
+  });
 
   anims.create({
     key: 'adam_idle_left',
@@ -32,7 +33,7 @@ export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) 
     }),
     repeat: -1,
     frameRate: animsFrameRate * 0.6,
-  })
+  });
 
   anims.create({
     key: 'adam_idle_down',
@@ -42,7 +43,7 @@ export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) 
     }),
     repeat: -1,
     frameRate: animsFrameRate * 0.6,
-  })
+  });
 
   anims.create({
     key: 'adam_run_right',
@@ -52,7 +53,7 @@ export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) 
     }),
     repeat: -1,
     frameRate: animsFrameRate,
-  })
+  });
 
   anims.create({
     key: 'adam_run_up',
@@ -62,7 +63,7 @@ export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) 
     }),
     repeat: -1,
     frameRate: animsFrameRate,
-  })
+  });
 
   anims.create({
     key: 'adam_run_left',
@@ -72,7 +73,7 @@ export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) 
     }),
     repeat: -1,
     frameRate: animsFrameRate,
-  })
+  });
 
   anims.create({
     key: 'adam_run_down',
@@ -82,7 +83,7 @@ export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) 
     }),
     repeat: -1,
     frameRate: animsFrameRate,
-  })
+  });
 
   anims.create({
     key: 'adam_sit_down',
@@ -92,7 +93,7 @@ export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) 
     }),
     repeat: 0,
     frameRate: animsFrameRate,
-  })
+  });
 
   anims.create({
     key: 'adam_sit_left',
@@ -102,7 +103,7 @@ export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) 
     }),
     repeat: 0,
     frameRate: animsFrameRate,
-  })
+  });
 
   anims.create({
     key: 'adam_sit_right',
@@ -112,7 +113,7 @@ export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) 
     }),
     repeat: 0,
     frameRate: animsFrameRate,
-  })
+  });
 
   anims.create({
     key: 'adam_sit_up',
@@ -122,5 +123,5 @@ export const createCharacterAnims = (anims: Phaser.Animations.AnimationManager) 
     }),
     repeat: 0,
     frameRate: animsFrameRate,
-  })
-}
+  });
+};

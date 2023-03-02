@@ -3,7 +3,6 @@
   font-family: 'Silkscreen', cursive;
 }
 
-
 .main {
   min-height: 100vh;
   padding: 0 0 14rem 0;
@@ -19,28 +18,27 @@
   margin-bottom: 50px;
 }
 
-.link{
+.link {
   font-size: 40px;
   margin-top: 40px;
   display: block;
   color: #fff;
 }
-.link a{
+.link a {
   color: gold;
-
 }
 
-.Bomlink{
+.Bomlink {
   display: flex;
-    /* color: #fff; */
-    font-size: 30px;
-    justify-content: space-evenly;
-    /* padding: 20px; */
-    width: 500px;
-    margin-top: 80px;
+  /* color: #fff; */
+  font-size: 30px;
+  justify-content: space-evenly;
+  /* padding: 20px; */
+  width: 500px;
+  margin-top: 80px;
 }
 
-.Bomlink a{
+.Bomlink a {
   /* display: flex; */
-  color:#fff;
+  color: #fff;
 }

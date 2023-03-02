@@ -20,7 +20,6 @@ a {
   bottom: 80px !important;
 } */
 
-
 /* .rpgBoxModal { */
 .rpgBoxModal .ant-modal-content {
   background-color: transparent !important;
@@ -42,7 +41,7 @@ a {
 /* } */
 
 .npcTitle {
-  font-size: 30px
+  font-size: 30px;
 }
 
 .font30 {
@@ -50,23 +49,22 @@ a {
 }
 
 .font20 {
-  font-size: 20px
+  font-size: 20px;
 }
 
 .width400 {
-  width: 400px
+  width: 400px;
 }
 
 .width500 {
-  width: 500px
+  width: 500px;
 }
 
 .ml50 {
-  margin-left: 30px
+  margin-left: 30px;
 }
 
 .hackerBox {
-
   display: flex;
 }
 
@@ -75,15 +73,15 @@ a {
   justify-content: space-between;
 }
 
-.monsterPng img{
+.monsterPng img {
   /* height: 300px */
-  height:256px;
+  height: 256px;
 }
 
 .action {
   display: flex;
   justify-content: space-around;
-  margin-top: 30px
+  margin-top: 30px;
 }
 
 .actionItem1 {
@@ -100,7 +98,7 @@ a {
   width: 50px;
   height: 50px;
   cursor: pointer;
-  border-radius:8px;
+  border-radius: 8px;
 }
 
 .boxOnChain {

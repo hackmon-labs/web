@@ -1,13 +1,10 @@
-# This is  [Hackmon](https://hackmon.xyz) !
+# This is [Hackmon](https://hackmon.xyz) !
 
+<div align=center>
 
-
-<div align=center> 
-
-![logo](./ReadmeImgs/logo.png) 
+![logo](./ReadmeImgs/logo.png)
 
 </div>
-
 
 ## hackmon is an MMORPG where players can socially and fight monsters, Protect Ethereum safety and dedicated to defeating monsters in the dark forest, play to own
 
@@ -15,7 +12,6 @@
 ![fight](./ReadmeImgs/2.jpg)
 ![people](./ReadmeImgs/4.jpg)
 ![package](./ReadmeImgs/5.jpg)
-
 
 ## Inspiration
 
@@ -33,8 +29,5 @@ We use **Chainlink Any API** to synchronize the user's game data to the chain, a
 
 ## What's next for hackmon
 
- we intend to continue to do the trading market in the game. Low taxes and fast transactions may also have AMA exchanges. Players' equipment can be synthesized to generate rare props.Add more story plot.
- let more web2 users can play the game
-
-
-
+we intend to continue to do the trading market in the game. Low taxes and fast transactions may also have AMA exchanges. Players' equipment can be synthesized to generate rare props.Add more story plot.
+let more web2 users can play the game

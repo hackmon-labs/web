@@ -1,22 +1,19 @@
 /* eslint-disable */
 
 import { useEffect, useRef } from 'react';
-import { Types } from 'phaser'
-import Main from './scenes/Game'
-import Preloader from './scenes/Preloader'
-import Forest from './scenes/Forest'
+import { Types } from 'phaser';
+import Main from './scenes/Game';
+import Preloader from './scenes/Preloader';
+import Forest from './scenes/Forest';
 
-
-
-var game = null
-
+var game = null;
 
 export default function PhaserGame() {
-  console.log('start1 game')
+  console.log('start1 game');
 
   useEffect(() => {
     loadGame();
-    console.log("load game");
+    console.log('load game');
   }, []);
 
   const config: Types.Core.GameConfig = {
@@ -41,30 +38,25 @@ export default function PhaserGame() {
       },
     },
     autoFocus: true,
-    scene: [Preloader, Main,],
+    scene: [Preloader, Main],
     // scene: [Preloader, ],
-  }
-
-
+  };
 
   const loadGame = async () => {
-    if (typeof window !== "object") {
+    if (typeof window !== 'object') {
       return;
     }
 
     game = new Phaser.Game(config);
-    game.scene.start("preloader");
-    ; (window as any).game = game
-
-  }
+    game.scene.start('preloader');
+    (window as any).game = game;
+  };
 
   return null;
 }
 
-
 declare global {
   interface Window {
-    game: any
+    game: any;
   }
 }
-

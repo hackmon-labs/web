@@ -1,13 +1,13 @@
 import '../styles/globals.css';
 import '@rainbow-me/rainbowkit/styles.css';
-import 'antd/dist/antd.css'
+import 'antd/dist/antd.css';
 import type { AppProps } from 'next/app';
 import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
-import { Provider } from 'react-redux'
-import store from '../stores'
+import { Provider } from 'react-redux';
+import store from '../stores';
 // import { Silkscreen } from '@next/font/google'
 
 const { chains, provider, webSocketProvider } = configureChains(

@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { IChatMessage } from '../components/types/IOfficeState'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IChatMessage } from '../components/types/IOfficeState';
 
 export enum MessageType {
   PLAYER_JOINED,
@@ -10,17 +10,20 @@ export enum MessageType {
 export const chatSlice = createSlice({
   name: 'chat',
   initialState: {
-    chatMessages: new Array<{ messageType: MessageType; chatMessage: IChatMessage }>(),
+    chatMessages: new Array<{
+      messageType: MessageType;
+      chatMessage: IChatMessage;
+    }>(),
     focused: false,
     showChat: true,
-    onlineNumber:0
+    onlineNumber: 0,
   },
   reducers: {
     pushChatMessage: (state, action: PayloadAction<IChatMessage>) => {
       state.chatMessages.push({
         messageType: MessageType.REGULAR_MESSAGE,
         chatMessage: action.payload,
-      })
+      });
     },
     pushPlayerJoinedMessage: (state, action: PayloadAction<string>) => {
       state.chatMessages.push({
@@ -30,8 +33,8 @@ export const chatSlice = createSlice({
           author: action.payload,
           content: 'joined the lobby',
         } as IChatMessage,
-      })
-      state.onlineNumber++
+      });
+      state.onlineNumber++;
     },
     pushPlayerLeftMessage: (state, action: PayloadAction<string>) => {
       state.chatMessages.push({
@@ -41,18 +44,17 @@ export const chatSlice = createSlice({
           author: action.payload,
           content: 'left the lobby',
         } as IChatMessage,
-      })
-      state.onlineNumber--
-
+      });
+      state.onlineNumber--;
     },
     setFocused: (state, action: PayloadAction<boolean>) => {
-      state.focused = action.payload
+      state.focused = action.payload;
     },
     setShowChat: (state, action: PayloadAction<boolean>) => {
-      state.showChat = action.payload
+      state.showChat = action.payload;
     },
   },
-})
+});
 
 export const {
   pushChatMessage,
@@ -60,6 +62,6 @@ export const {
   pushPlayerLeftMessage,
   setFocused,
   setShowChat,
-} = chatSlice.actions
+} = chatSlice.actions;
 
-export default chatSlice.reducer
+export default chatSlice.reducer;

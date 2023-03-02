@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 function Discord() {
   useEffect(() => {
-    window.location.href = "https://discord.gg/GKwQqefN2b";
+    window.location.href = 'https://discord.gg/GKwQqefN2b';
   }, []);
 
   return (

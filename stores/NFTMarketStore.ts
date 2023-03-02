@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export const nftMarket = createSlice({
   name: 'nftMarketPlace',
@@ -7,13 +7,11 @@ export const nftMarket = createSlice({
   },
   reducers: {
     setOpen: (state, action: PayloadAction<boolean>) => {
-      state.open = action.payload
+      state.open = action.payload;
     },
-  }
-})
+  },
+});
 
-export const {
-  setOpen,
-} = nftMarket.actions
+export const { setOpen } = nftMarket.actions;
 
-export default nftMarket.reducer
+export default nftMarket.reducer;
