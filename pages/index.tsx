@@ -10,7 +10,12 @@ import Image from 'next/image'
 
 const Home: NextPage = () => {
 
- 
+  const discordOpenClick = (event) => {
+    // window.location.href = "https://discord.com/invite/GKwQqefN2b";
+    event.preventDefault();
+    window.open('/discord', '_blank');
+  }
+
   return (
     <div className={styles.containerBox}>
       <Head>
@@ -28,35 +33,38 @@ const Home: NextPage = () => {
         backgroundSize: 'cover'
       }}>
         <Image
-        className={styles.logo}
-            alt=''
-            src={Logo}
-            // height="300"
-            fill="true"
-          />
+          className={styles.logo}
+          alt=''
+          src={Logo}
+          // height="300"
+          fill="true"
+        />
         {/* <h1 className={styles.title}>
           Hackmon
           </h1> */}
-        
+
         {/* <Logo /> */}
         <ConnectButton />
 
         <div className={styles.link}>
 
-        <Link href={{
-          pathname: '/game',
-        }}
-          
+          <Link href={{
+            pathname: '/alpha',
+          }}
+
           >play Hackmon</Link>
         </div>
 
         <div className={styles.Bomlink}>
-          <a href="https://twitter.com/HackmonX">Twitter</a>
-          <a href="https://discord.gg/aDJFjBEmdU">Discord</a>
+          <a href="https://twitter.com/HackmonX" target="_blank" rel="noreferrer">Twitter</a>
+          <a onClick={discordOpenClick} href="javascript:;" >
+
+            Discord
+            <a/>
         </div>
 
       </main>
-      
+
     </div>
   );
 };
