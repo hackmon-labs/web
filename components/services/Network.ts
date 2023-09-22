@@ -24,8 +24,7 @@ export default class Network {
     const protocol = window.location.protocol.replace('http', 'ws');
     // const endpoint = process.env.NODE_ENV === 'production' ? `wss://vuy0gy.us-east-vin.colyseus.net` : `ws://vuy0gy.us-east-vin.colyseus.net`
     // const endpoint = process.env.NODE_ENV === 'production' ? `wss://ap-jov.colyseus.dev` : `ws://localhost:2567`
-    // const endpoint = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_SERVER_URL : `ws://localhost:2567`
-    const endpoint = process.env.NEXT_PUBLIC_ENDPOINT;
+    const endpoint = process.env.NODE_ENV === 'production' ?process.env.NEXT_PUBLIC_SERVER_URL.replace('https', 'wss') : `ws://localhost:2567`
     this.client = new Client(endpoint);
 
     phaserEvents.on(Event.MY_PLAYER_NAME_CHANGE, this.updatePlayerName, this);
