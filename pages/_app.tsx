@@ -18,7 +18,7 @@ const { chains, provider, webSocketProvider } = configureChains(
     // chain.arbitrum,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true'
       ? [chain.polygonMumbai]
-      : []),
+      : [chain.polygonMumbai]),
   ],
   [
     alchemyProvider({

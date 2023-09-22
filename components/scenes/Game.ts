@@ -370,7 +370,8 @@ export default class Game extends Phaser.Scene {
 
   npcTalk(obj1, obj2) {
     obj2.body.enable = false;
-    store.dispatch(setOpen(true));
+    // store.dispatch(setOpen(true));
+    store.dispatch(setRpgOpen(true));
   }
 
   goForest = (obj1, obj2) => {
